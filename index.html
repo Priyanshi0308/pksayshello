@@ -25,7 +25,44 @@
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
-  html { scroll-behavior: smooth; font-size: 16px; }
+  /* html { scroll-behavior: smooth; font-size: 16px; } */
+  document.querySelectorAll('.nav-links a, .nav-logo').forEach(link => {
+    link.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href');
+  
+      if (targetId.startsWith('#')) {
+        e.preventDefault();
+        const target = document.querySelector(targetId);
+  
+        const start = window.scrollY;
+        const end = target.offsetTop - 60; // navbar offset
+        const distance = end - start;
+        let startTime = null;
+  
+        function scrollAnimation(currentTime) {
+          if (!startTime) startTime = currentTime;
+          const timeElapsed = currentTime - startTime;
+  
+          const duration = 700; // 👈 THIS controls speed (sweet spot)
+          const progress = Math.min(timeElapsed / duration, 1);
+  
+          window.scrollTo(0, start + distance * ease(progress));
+  
+          if (timeElapsed < duration) {
+            requestAnimationFrame(scrollAnimation);
+          }
+        }
+  
+        function ease(t) {
+          return t < 0.5
+            ? 2 * t * t
+            : 1 - Math.pow(-2 * t + 2, 2) / 2;
+        }
+  
+        requestAnimationFrame(scrollAnimation);
+      }
+    });
+  });
 
   body {
     background: var(--bg);
