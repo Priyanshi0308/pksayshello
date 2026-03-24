@@ -1,0 +1,1458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Priyanshi Kwatra — Data, Research & Decision Intelligence</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F8F6F2;
+    --bg2: #F2EFE9;
+    --text: #2A2520;
+    --text-muted: #7A7065;
+    --text-light: #A89F95;
+    --accent: #5B7FA6;
+    --accent-light: #E8EFF7;
+    --accent-sage: #6B8C6B;
+    --border: #E0DAD3;
+    --white: #FDFCFA;
+    --mono: 'DM Mono', monospace;
+    --serif: 'Cormorant Garamond', serif;
+    --sans: 'DM Sans', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; font-size: 16px; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(248, 246, 242, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 clamp(1.5rem, 5vw, 4rem);
+    height: 60px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex; gap: 2.5rem; list-style: none;
+    font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase;
+  }
+
+  .nav-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+    position: relative;
+  }
+
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1px;
+    background: var(--accent); transition: width 0.25s ease;
+  }
+
+  .nav-links a:hover { color: var(--text); }
+  .nav-links a:hover::after { width: 100%; }
+
+  /* SECTIONS */
+  section {
+    padding: clamp(5rem, 10vw, 8rem) clamp(1.5rem, 8vw, 10rem);
+    max-width: 1100px; margin: 0 auto;
+  }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.2rem;
+  }
+
+  h2 {
+    font-family: var(--serif);
+    font-size: clamp(1.9rem, 4vw, 2.8rem);
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+  }
+
+  h3 {
+    font-family: var(--serif);
+    font-size: 1.35rem;
+    font-weight: 400;
+  }
+
+  p { color: var(--text-muted); font-size: 0.95rem; }
+
+  hr.divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 0 clamp(1.5rem, 8vw, 10rem);
+  }
+
+  /* ─── HERO ─── */
+  #hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center;
+    padding-top: 100px;
+    position: relative;
+  }
+
+  .hero-eyebrow {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin-bottom: 2rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+
+  .hero-eyebrow::before {
+    content: ''; display: inline-block;
+    width: 2rem; height: 1px; background: var(--text-light);
+  }
+
+  .hero-name {
+    font-family: var(--serif);
+    font-size: clamp(3rem, 8vw, 6.5rem);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin-bottom: 1.8rem;
+    color: var(--text);
+  }
+
+  .hero-name em { font-style: italic; color: var(--accent); }
+
+  .hero-tagline {
+    font-size: clamp(1rem, 2vw, 1.15rem);
+    color: var(--text-muted);
+    max-width: 500px;
+    line-height: 1.7;
+    margin-bottom: 3rem;
+    font-weight: 300;
+  }
+
+  .hero-cta {
+    display: flex; gap: 1.2rem; flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.75rem 1.8rem;
+    font-family: var(--sans);
+    font-size: 0.82rem;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    transition: all 0.22s ease;
+    cursor: pointer;
+    border: none;
+    font-weight: 400;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background: #4A6E95;
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgba(91, 127, 166, 0.25);
+  }
+
+  .btn-outline {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+  }
+
+  .btn-outline:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .hero-scroll-hint {
+    position: absolute; bottom: 3rem; left: clamp(1.5rem, 8vw, 10rem);
+    display: flex; align-items: center; gap: 0.8rem;
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    color: var(--text-light);
+    text-transform: uppercase;
+  }
+
+  .scroll-line {
+    width: 40px; height: 1px; background: var(--text-light);
+    transform-origin: left;
+    animation: scrollLine 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollLine {
+    0%, 100% { transform: scaleX(1); opacity: 1; }
+    50% { transform: scaleX(0.4); opacity: 0.4; }
+  }
+
+  /* ─── ABOUT ─── */
+  #about .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    margin-top: 3rem;
+  }
+
+  .about-block { margin-bottom: 2rem; }
+
+  .about-block-label {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.6rem;
+  }
+
+  .about-block p {
+    font-size: 0.92rem;
+    line-height: 1.75;
+  }
+
+  .thinking-steps {
+    margin-top: 3rem;
+    padding-top: 3rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .thinking-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .thinking-card {
+    padding: 1.5rem;
+    background: var(--white);
+    border: 1px solid var(--border);
+    transition: all 0.22s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .thinking-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; width: 3px; height: 0;
+    background: var(--accent);
+    transition: height 0.3s ease;
+  }
+
+  .thinking-card:hover::before { height: 100%; }
+  .thinking-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.06); }
+
+  .thinking-num {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    color: var(--text-light);
+    margin-bottom: 0.8rem;
+  }
+
+  .thinking-card h4 {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+  }
+
+  .thinking-card p { font-size: 0.82rem; }
+
+  /* ─── SKILLS ─── */
+  #skills { background: var(--bg2); }
+
+  .skills-wrapper {
+    margin-top: 3rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .skill-cluster {
+    background: var(--white);
+    border: 1px solid var(--border);
+    padding: 2rem;
+    cursor: pointer;
+    transition: all 0.22s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .skill-cluster:hover {
+    box-shadow: 0 12px 32px rgba(0,0,0,0.07);
+    transform: translateY(-2px);
+  }
+
+  .skill-cluster-header {
+    display: flex; align-items: flex-start; justify-content: space-between;
+    margin-bottom: 0;
+  }
+
+  .skill-icon {
+    width: 36px; height: 36px;
+    background: var(--accent-light);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  .skill-cluster h3 {
+    font-size: 1.15rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .skill-cluster-expand {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin-top: 0.3rem;
+    display: flex; align-items: center; gap: 0.4rem;
+  }
+
+  .skill-cluster-body {
+    max-height: 0; overflow: hidden;
+    transition: max-height 0.4s ease, opacity 0.3s ease, padding 0.3s ease;
+    opacity: 0;
+    padding-top: 0;
+  }
+
+  .skill-cluster.open .skill-cluster-body {
+    max-height: 300px; opacity: 1; padding-top: 1.2rem;
+  }
+
+  .skill-tags {
+    display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem;
+  }
+
+  .tag {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    padding: 0.25rem 0.6rem;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    letter-spacing: 0.04em;
+  }
+
+  .skill-detail {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+    border-left: 2px solid var(--accent);
+    padding-left: 0.8rem;
+  }
+
+  .skill-icon {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #888;
+    letter-spacing: 1px;
+  }
+
+  /* ─── PROJECTS ─── */
+  .projects-categories {
+    display: flex; gap: 0.8rem; flex-wrap: wrap;
+    margin: 2.5rem 0 2rem;
+  }
+
+  .cat-btn {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.4rem 1rem;
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.18s ease;
+  }
+
+  .cat-btn.active, .cat-btn:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .project-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    transition: all 0.22s ease;
+  }
+
+  .project-card:hover {
+    box-shadow: 0 12px 32px rgba(0,0,0,0.07);
+    transform: translateY(-2px);
+  }
+
+  .project-card[data-cat]:not(.visible) { display: none; }
+  .project-card.visible { display: block; }
+
+  .project-head {
+    padding: 1.5rem 1.5rem 1rem;
+    cursor: pointer;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1rem; align-items: start;
+  }
+
+  .project-category-tag {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+
+  .project-card h3 {
+    font-size: 1.08rem;
+    line-height: 1.3;
+  }
+
+  .project-toggle {
+    width: 24px; height: 24px;
+    border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.8rem;
+    color: var(--text-light);
+    transition: all 0.2s;
+    flex-shrink: 0;
+    cursor: pointer;
+  }
+
+  .project-card.open .project-toggle { background: var(--accent); color: white; border-color: var(--accent); }
+
+  .project-body {
+    max-height: 0; overflow: hidden;
+    transition: max-height 0.4s ease;
+  }
+
+  .project-card.open .project-body { max-height: 600px; overflow-y: auto; }
+
+  .project-inner {
+    padding: 0 1.5rem 1.5rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .project-row {
+    padding: 0.8rem 0;
+    border-bottom: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 1rem;
+  }
+
+  .project-row:last-child { border-bottom: none; }
+
+  .project-row-label {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-light);
+    padding-top: 0.05rem;
+  }
+
+  .project-row p { font-size: 0.85rem; }
+
+  .project-row .tag { margin: 0.15rem; }
+
+  .project-improvement {
+    font-size: 0.82rem;
+    color: var(--accent);
+    font-style: italic;
+  }
+
+  .project-link {
+    margin-top: 14px;
+  }
+
+  .project-link a {
+    font-size: 0.85rem;
+    color: #666;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: all 0.2s ease;
+  }
+
+  .project-link a:hover {
+    color: #000;
+    border-bottom: 1px solid #000;
+  }
+
+  /* ─── EXPERIENCE ─── */
+  .experience-list {
+    margin-top: 3rem;
+    display: flex; flex-direction: column; gap: 0;
+  }
+
+  .experience-item {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 3rem;
+    padding: 2.5rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .exp-meta { }
+
+  .exp-role {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin-bottom: 0.3rem;
+  }
+
+  .exp-company {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 0.3rem;
+  }
+
+  .exp-date {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    color: var(--text-light);
+    letter-spacing: 0.04em;
+  }
+
+  .exp-story {
+    display: flex; flex-direction: column; gap: 1rem;
+  }
+
+  .exp-story-part {
+    display: flex; gap: 1rem;
+  }
+
+  .exp-story-key {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-light);
+    min-width: 70px;
+    padding-top: 0.12rem;
+    flex-shrink: 0;
+  }
+
+  .exp-story-val { font-size: 0.88rem; line-height: 1.7; }
+
+
+  /* ─── EXPLORING ─── */
+  #exploring {
+    background: var(--text);
+    color: var(--bg);
+    max-width: none;
+    padding: clamp(5rem, 10vw, 8rem) clamp(1.5rem, 8vw, 10rem);
+  }
+
+  #exploring .section-label { color: var(--accent-light); }
+  #exploring h2 { color: var(--bg); }
+  #exploring p { color: rgba(248, 246, 242, 0.6); }
+
+  .exploring-inner {
+    max-width: 1100px; margin: 0 auto;
+  }
+
+  .explore-grid {
+    margin-top: 3rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .explore-card {
+    border: 1px solid rgba(255,255,255,0.12);
+    padding: 1.8rem;
+    transition: border-color 0.2s;
+  }
+
+  .explore-card:hover { border-color: rgba(91,127,166,0.6); }
+
+  .explore-status {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.5rem;
+    background: rgba(91,127,166,0.2);
+    color: #8AAFE0;
+    margin-bottom: 1rem;
+  }
+
+  .explore-card h4 {
+    font-family: var(--serif);
+    font-size: 1.12rem;
+    font-weight: 400;
+    color: var(--bg);
+    margin-bottom: 0.5rem;
+  }
+
+  .explore-card p { font-size: 0.83rem; }
+
+  /* ─── BLOG ─── */
+  .blog-posts {
+    margin-top: 3rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .blog-post {
+    padding: 1.5rem;
+    background: var(--white);
+    border: 1px solid var(--border);
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.22s ease;
+    display: block;
+  }
+
+  .blog-post:hover {
+    box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+    transform: translateY(-2px);
+  }
+
+  .blog-tag {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.7rem;
+  }
+
+  .blog-post h4 {
+    font-family: var(--serif);
+    font-size: 1.12rem;
+    font-weight: 400;
+    line-height: 1.35;
+    margin-bottom: 0.6rem;
+  }
+
+  .blog-post p { font-size: 0.83rem; }
+
+  .blog-cta-row {
+    display: flex; align-items: center; gap: 1.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+  }
+
+  /* ─── LEADERSHIP ─── */
+  .leadership-card {
+    margin-top: 3rem;
+    background: var(--white);
+    border: 1px solid var(--border);
+    padding: 2.5rem;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 3rem;
+  }
+
+  .leadership-left h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .leadership-org {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 0.3rem;
+  }
+
+  .leadership-date {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    color: var(--text-light);
+  }
+
+  .leadership-attrs {
+    display: flex; flex-direction: column; gap: 1rem;
+  }
+
+  .leadership-attr {
+    display: flex; gap: 1rem; align-items: flex-start;
+  }
+
+  .attr-dot {
+    width: 6px; height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 0.5rem;
+  }
+
+  /* ─── CONTACT ─── */
+  #contact {
+    text-align: center;
+    padding: clamp(5rem, 10vw, 8rem) clamp(1.5rem, 8vw, 10rem);
+    max-width: 700px; margin: 0 auto;
+  }
+
+  .contact-tagline {
+    font-family: var(--serif);
+    font-size: clamp(1.3rem, 3vw, 1.9rem);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--text-muted);
+    margin: 1.5rem 0 2.5rem;
+    line-height: 1.5;
+  }
+
+  .contact-links {
+    display: flex; align-items: center; justify-content: center;
+    gap: 2rem; flex-wrap: wrap;
+    margin-bottom: 3rem;
+  }
+
+  .contact-link {
+    display: flex; align-items: center; gap: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .contact-link:hover { color: var(--accent); }
+
+  .contact-link-icon {
+    width: 32px; height: 32px;
+    border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem;
+    transition: all 0.2s;
+  }
+
+  .contact-link:hover .contact-link-icon {
+    background: var(--accent); border-color: var(--accent); color: white;
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2rem clamp(1.5rem, 8vw, 10rem);
+    display: flex; align-items: center; justify-content: space-between;
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    color: var(--text-light);
+  }
+
+  /* FADE IN */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .about-grid, .thinking-grid, .skills-wrapper,
+    .projects-grid, .explore-grid, .blog-posts { grid-template-columns: 1fr; }
+    .experience-item { grid-template-columns: 1fr; gap: 1.5rem; }
+    .leadership-card { grid-template-columns: 1fr; gap: 2rem; }
+    .nav-links { display: none; }
+  }
+
+  @media (max-width: 480px) {
+    .thinking-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  /* Section wrapper for full-width bg sections */
+  .full-bg { background: var(--bg2); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">PK</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="https://priyanshikwatra.substack.com/" target="_blank">Blog</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-eyebrow">Consulting &nbsp;·&nbsp; Data Science &nbsp;·&nbsp; Economics</div>
+  <h1 class="hero-name">
+    Priyanshi<br><em>Kwatra</em>
+  </h1>
+  <p class="hero-tagline">Data, Research, and Decision Intelligence.<br>I work at the intersection of data, economics, and real-world decision making.</p>
+  <div class="hero-cta">
+    <a href="#projects" class="btn btn-primary">View Work</a>
+    <a href="#about" class="btn btn-outline">How I Think →</a>
+  </div>
+  <div class="hero-scroll-hint">
+    <div class="scroll-line"></div>
+    Scroll to explore
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">About</div>
+  <h2>Thinking through<br>complexity</h2>
+
+  <div class="about-grid">
+    <div>
+      <div class="about-block">
+        <div class="about-block-label">What I work on</div>
+        <p>Research-driven data analysis across M&amp;A, market entry, and policy domains. I translate messy, real-world datasets into clear decisions, through econometrics, machine learning, and structured thinking.</p>
+      </div>
+      <div class="about-block">
+        <div class="about-block-label">How I approach problems</div>
+        <p>I start by questioning the question. Before any model or query, I ask: what decision does this analysis actually enable? That framing shapes everything, which data matters, which method fits, what counts as a good answer.</p>
+      </div>
+    </div>
+    <div>
+      <div class="about-block">
+        <div class="about-block-label">What excites me</div>
+        <p>Work where data and context are inseparable. I'm drawn to problems where economic intuition and quantitative rigor reinforce each other, not replace one another.</p>
+      </div>
+      <div class="about-block">
+        <div class="about-block-label">Background</div>
+        <p>BA (Honours) Economics from Dyal Singh College, University of Delhi. Diploma in Data Science & Applications from IIT Madras. The combination isn't accidental, I wanted both the theory and the tooling.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW I THINK -->
+  <div class="thinking-steps fade-up">
+    <div class="section-label">How I Think</div>
+    <h2>The analytical process</h2>
+    <div class="thinking-grid">
+      <div class="thinking-card">
+        <div class="thinking-num">01</div>
+        <h4>Problem Understanding</h4>
+        <p>Clarify the decision at stake before touching data. What changes downstream if the answer is X vs Y?</p>
+      </div>
+      <div class="thinking-card">
+        <div class="thinking-num">02</div>
+        <h4>Data Exploration</h4>
+        <p>Surface distributions, gaps, and anomalies first. Good EDA prevents bad models and reveals the real story.</p>
+      </div>
+      <div class="thinking-card">
+        <div class="thinking-num">03</div>
+        <h4>Method Selection</h4>
+        <p>Choose the simplest model that answers the question honestly. Complexity earns its place through evidence, not instinct.</p>
+      </div>
+      <div class="thinking-card">
+        <div class="thinking-num">04</div>
+        <h4>Interpretation</h4>
+        <p>Results without context are noise. I focus on what the numbers mean for the original decision, including uncertainty.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- SKILLS -->
+<div class="full-bg">
+<section id="skills">
+  <div class="section-label">Skills</div>
+  <h2>Capabilities, in context</h2>
+
+  <div class="skills-wrapper">
+
+    <div class="skill-cluster" onclick="toggleSkill(this)">
+      <div class="skill-cluster-header">
+        <div>
+          <div class="skill-icon">01</div>
+          <h3 style="margin-top:0.8rem">Data Analysis</h3>
+          <div class="skill-cluster-expand">Tap to explore ↓</div>
+        </div>
+      </div>
+      <div class="skill-cluster-body">
+        <div class="skill-tags">
+          <span class="tag">Python</span><span class="tag">Pandas</span>
+          <span class="tag">NumPy</span><span class="tag">SQL</span><span class="tag">Excel</span>
+        </div>
+        <div class="skill-detail">
+          EDA on 142K+ crime records to surface spatial and temporal patterns. Statistical comparisons of loan products at SBI to identify behavioral segments. 
+        </div>
+      </div>
+    </div>
+
+    <div class="skill-cluster" onclick="toggleSkill(this)">
+      <div class="skill-cluster-header">
+        <div>
+          <div class="skill-icon">02</div>
+          <h3 style="margin-top:0.8rem">Machine Learning</h3>
+          <div class="skill-cluster-expand">Tap to explore ↓</div>
+        </div>
+      </div>
+      <div class="skill-cluster-body">
+        <div class="skill-tags">
+          <span class="tag">Scikit-Learn</span><span class="tag">XGBoost</span>
+          <span class="tag">GridSearchCV</span><span class="tag">Feature Eng.</span>
+        </div>
+        <div class="skill-detail">
+          Built CrimeCast with Logistic Regression, Random Forest &amp; XGBoost, achieving 83% categorisation accuracy. Used econometric regression models for Bengaluru housing price prediction. 
+        </div>
+      </div>
+    </div>
+
+    <div class="skill-cluster" onclick="toggleSkill(this)">
+      <div class="skill-cluster-header">
+        <div>
+          <div class="skill-icon">03</div>
+          <h3 style="margin-top:0.8rem">Visualisation</h3>
+          <div class="skill-cluster-expand">Tap to explore ↓</div>
+        </div>
+      </div>
+      <div class="skill-cluster-body">
+        <div class="skill-tags">
+          <span class="tag">Tableau</span><span class="tag">Power BI</span>
+          <span class="tag">Google Sheets</span><span class="tag">Matplotlib</span>
+        </div>
+        <div class="skill-detail">
+          Interactive Tableau dashboard for D.C. crime data, layering geographic, temporal, and demographic views. Dashboards and presentations at YAMADA for M&A and strategy.
+        </div>
+      </div>
+    </div>
+
+    <div class="skill-cluster" onclick="toggleSkill(this)">
+      <div class="skill-cluster-header">
+        <div>
+          <div class="skill-icon">04</div>
+          <h3 style="margin-top:0.8rem">Development</h3>
+          <div class="skill-cluster-expand">Tap to explore ↓</div>
+        </div>
+      </div>
+      <div class="skill-cluster-body">
+        <div class="skill-tags">
+          <span class="tag">Flask</span><span class="tag">REST APIs</span>
+          <span class="tag">Redis</span><span class="tag">Celery</span><span class="tag">SQLite</span>
+        </div>
+        <div class="skill-detail">
+          QuizMaster: a Flask app with SQLite for persistence, Redis for caching, Celery for async task automation, and REST APIs for performance tracking. 
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+</div>
+
+<hr class="divider">
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">Projects</div>
+  <h2>Selected Work</h2>
+
+  <div class="projects-categories">
+    <button class="cat-btn active" onclick="filterProjects('all', this)">All</button>
+    <button class="cat-btn" onclick="filterProjects('ml', this)">Machine Learning</button>
+    <button class="cat-btn" onclick="filterProjects('viz', this)">Data & Visualisation</button>
+    <button class="cat-btn" onclick="filterProjects('systems', this)">Systems</button>
+    <button class="cat-btn" onclick="filterProjects('research', this)">Research & Economics</button>
+  </div>
+
+  <div class="projects-grid">
+
+    <!-- CrimeCast -->
+    <div class="project-card visible" data-cat="ml">
+      <div class="project-head" onclick="toggleProject(this.parentElement)">
+        <div>
+          <div class="project-category-tag">Machine Learning</div>
+          <h3>CrimeCast: Forecasting Crime Categories</h3>
+        </div>
+        <div class="project-toggle">+</div>
+      </div>
+      <div class="project-body">
+        <div class="project-inner">
+          <div class="project-row">
+            <span class="project-row-label">Problem</span>
+            <p>Can crime category be predicted from contextual variables to better allocate police resources?</p>
+          </div>
+          <div class="project-row">
+            <span class="project-row-label">Approach</span>
+            <p>EDA to surface class imbalances, feature engineering on temporal/spatial variables, compared Logistic Regression, Random Forest, and XGBoost with GridSearchCV tuning.</p>
+          </div>
+          <div class="project-row">
+            <span class="project-row-label">Key Insight</span>
+            <p>Time-of-day and location type were the strongest predictors — not demographic variables. 83% accuracy with XGBoost.</p>
+          </div>
+          <div class="project-row">
+            <span class="project-row-label">Tools</span>
+            <div class="skill-tags" style="margin:0"><span class="tag">Python</span><span class="tag">Scikit-Learn</span><span class="tag">XGBoost</span><span class="tag">Pandas</span></div>
+          </div>
+          <div class="project-link">
+            <a href="https://github.com/Priyanshi0308/CrimeCast-Forecasting-Crime-Categories-IITM" target="_blank">
+              View model details →
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bengaluru Housing -->
+    <div class="project-card visible" data-cat="ml">
+      <div class="project-head" onclick="toggleProject(this.parentElement)">
+        <div>
+          <div class="project-category-tag">Machine Learning</div>
+          <h3>Bengaluru Housing Price Prediction</h3>
+        </div>
+        <div class="project-toggle">+</div>
+      </div>
+      <div class="project-body">
+        <div class="project-inner">
+          <div class="project-row">
+            <span class="project-row-label">Problem</span>
+            <p>What drives housing prices in Bengaluru's heterogeneous real estate market?</p>
+          </div>
+          <div class="project-row">
+            <span class="project-row-label">Approach</span>
+            <p>Applied multiple regression with econometric methods — tested for multicollinearity, heteroskedasticity, and specification errors before finalising the model.</p>
+          </div>
+          <div class="project-row">
+            <span class="project-row-label">Key Insight</span>
+            <p>Locality and BHK configuration together explain over 70% of price variance — square footage alone is a weak predictor.</p>
+          </div>
+          <div class="project-row">
+            <span class="project-row-label">Tools</span>
+            <div class="skill-tags" style="margin:0"><span class="tag">Python</span><span class="tag">Statsmodels</span><span class="tag">Pandas</span><span class="tag">Matplotlib</span></div>
+          </div>
+          <div class="project-link">
+            <a href="https://drive.google.com/file/d/1RRgIb-onm55GSGAgX7kXXCxQ32OjpUbf/view?usp=sharing" target="_blank">
+              View analysis →
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Crime Dashboard -->
+    <div class="project-card visible" data-cat="viz">
+      <div class="project-head" onclick="toggleProject(this.parentElement)">
+        <div>
+          <div class="project-category-tag">Data & Visualisation</div>
+          <h3>Crime Analytics Dashboard: Washington, D.C.</h3>
+        </div>
+        <div class="project-toggle">+</div>
+      </div>
+      <div class="project-body">
+        <div class="project-inner">
+          <div class="project-row">
+            <span class="project-row-label">Problem</span>
+            <p>How can 142,000+ crime incidents be made navigable and actionable for policy stakeholders?</p>
+          </div>
+          <div class="project-row">
+            <span class="project-row-label">Approach</span>
+            <p>Built interactive Tableau dashboard layering spatial heatmaps, temporal trend lines, and demographic breakdowns with cross-filter interactions.</p>
+          </div>
+          <div class="project-row">
+            <span class="project-row-label">Key Insight</span>
+            <p>Crime peaks cluster tightly in 3-hour evening windows and shift geographically by season — patterns invisible in raw tables.</p>
+          </div>
+          <div class="project-row">
+            <span class="project-row-label">Tools</span>
+            <div class="skill-tags" style="margin:0"><span class="tag">Tableau</span><span class="tag">Excel</span><span class="tag">Python</span></div>
+          </div>
+          <div class="project-link">
+            <a href="https://public.tableau.com/views/CrimeAnalyticsDashboard_17612426385910/Dashboard1" target="_blank">
+              Explore dashboard →
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- QuizMaster -->
+    <div class="project-card visible" data-cat="systems">
+      <div class="project-head" onclick="toggleProject(this.parentElement)">
+        <div>
+          <div class="project-category-tag">Systems / Application</div>
+          <h3>QuizMaster — Flask Quiz Management System</h3>
+        </div>
+        <div class="project-toggle">+</div>
+      </div>
+      <div class="project-body">
+        <div class="project-inner">
+          <div class="project-row">
+            <span class="project-row-label">Problem</span>
+            <p>Build a scalable quiz platform that handles concurrent users, tracks performance, and auto-generates reports.</p>
+          </div>
+          <div class="project-row">
+            <span class="project-row-label">Approach</span>
+            <p>Flask REST API backend; Redis for session caching and performance; Celery workers for async report generation; SQLite for persistence.</p>
+          </div>
+          <div class="project-row">
+            <span class="project-row-label">Key Insight</span>
+            <p>Offloading report generation to Celery reduced API response time by ~60% — async design matters at scale.</p>
+          </div>
+          <div class="project-row">
+            <span class="project-row-label">Tools</span>
+            <div class="skill-tags" style="margin:0"><span class="tag">Flask</span><span class="tag">Redis</span><span class="tag">Celery</span><span class="tag">SQLite</span><span class="tag">REST APIs</span></div>
+          </div>
+          <div class="project-link">
+            <a href="https://github.com/Priyanshi0308/QuizMaster/tree/master" target="_blank">
+              View project →
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sustainability -->
+    <div class="project-card visible" data-cat="research">
+      <div class="project-head" onclick="toggleProject(this.parentElement)">
+        <div>
+          <div class="project-category-tag">Research & Economics</div>
+          <h3>Sustainability & Consumer Behaviour in Fashion</h3>
+        </div>
+        <div class="project-toggle">+</div>
+      </div>
+      <div class="project-body">
+        <div class="project-inner">
+          <div class="project-row">
+            <span class="project-row-label">Problem</span>
+            <p>Does green fashion marketing actually change consumer purchasing behaviour, or is it performative?</p>
+          </div>
+          <div class="project-row">
+            <span class="project-row-label">Approach</span>
+            <p>Quantitative survey design + econometric analysis. Used regression to isolate the effect of green claims while controlling for price sensitivity and brand loyalty.</p>
+          </div>
+          <div class="project-row">
+            <span class="project-row-label">Key Insight</span>
+            <p>Green signalling increases stated intent but the price premium tolerance is narrower than brands assume — behavioural gap persists.</p>
+          </div>
+          <div class="project-row">
+            <span class="project-row-label">Tools</span>
+            <div class="skill-tags" style="margin:0"><span class="tag">Statistical Analysis</span><span class="tag">Survey Design</span><span class="tag">Econometrics</span></div>
+          </div>
+          <div class="project-link">
+            <a href="https://drive.google.com/file/d/1JhCZSAeluITQDcXYObMg6ByKeuiA89_3/view" target="_blank">
+              Read full analysis →
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label">Experience</div>
+  <h2>Roles, in context</h2>
+
+  <div class="experience-list">
+
+    <div class="experience-item fade-up">
+      <div class="exp-meta">
+        <div class="exp-role">Junior Analyst</div>
+        <div class="exp-company">YAMADA Consulting & Spire</div>
+        <div class="exp-date">Nov 2024 — Present · Full-time</div>
+      </div>
+      <div class="exp-story">
+        <div class="exp-story-part">
+          <span class="exp-story-key">Context</span>
+          <span class="exp-story-val">Strategic consulting across M&A, market entry, and business development, with exposure across industries.</span>
+        </div>
+        <div class="exp-story-part">
+          <span class="exp-story-key">What I do</span>
+          <span class="exp-story-val">Research and data analysis to synthesise market signals into actionable insights. Build dashboards and presentations that directly inform client decisions.</span>
+        </div>
+        <div class="exp-story-part">
+          <span class="exp-story-key">Impact</span>
+          <span class="exp-story-val">My work feeds into strategy discussions across projects, and often involves moving between detailed analysis and making it clear and usable.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="experience-item fade-up">
+      <div class="exp-meta">
+        <div class="exp-role">Summer Intern</div>
+        <div class="exp-company">State Bank of India</div>
+        <div class="exp-date">Jun – Aug 2024 · Internship</div>
+      </div>
+      <div class="exp-story">
+        <div class="exp-story-part">
+          <span class="exp-story-key">Context</span>
+          <span class="exp-story-val">SBI's home loan division — one of India's largest retail lending portfolios.</span>
+        </div>
+        <div class="exp-story-part">
+          <span class="exp-story-key">What I did</span>
+          <span class="exp-story-val">Comparative statistical analysis of home loan products across customer segments. Mapped behavioural patterns to identify improvement opportunities in product structure and pricing.</span>
+        </div>
+        <div class="exp-story-part">
+          <span class="exp-story-key">What changed</span>
+          <span class="exp-story-val">Delivered a structured report with clear segment-level recommendations. Applied econometric intuition in a live financial services context for the first time.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="experience-item fade-up">
+      <div class="exp-meta">
+        <div class="exp-role">Research Intern</div>
+        <div class="exp-company">Nation First Policy Research Centre</div>
+        <div class="exp-date">Jun – Aug 2023 · Internship</div>
+      </div>
+      <div class="exp-story">
+        <div class="exp-story-part">
+          <span class="exp-story-key">Context</span>
+          <span class="exp-story-val">Government-aligned policy research on local economic development under the ODOP initiative.</span>
+        </div>
+        <div class="exp-story-part">
+          <span class="exp-story-key">What I did</span>
+          <span class="exp-story-val">District-level data collection, cleaning, and analysis across production and employment metrics. Generated ranked insights to guide resource allocation decisions.</span>
+        </div>
+        <div class="exp-story-part">
+          <span class="exp-story-key">What changed</span>
+          <span class="exp-story-val">Learnt to work with messy, fragmented government datasets, and to build reliable signals from imperfect data.</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EXPLORING -->
+<div id="exploring">
+  <div class="exploring-inner">
+    <div class="section-label">Currently</div>
+    <h2>Things I'm exploring</h2>
+    <p>Depth requires curiosity. These are problems I'm actively working through.</p>
+
+    <div class="explore-grid">
+      <div class="explore-card">
+        <div class="explore-status">In Progress</div>
+        <h4>Feature Selection & High-Dimensional Data</h4>
+        <p>When does adding more variables hurt more than help? Exploring regularisation, variance thresholds, and mutual information methods.</p>
+      </div>
+      <div class="explore-card">
+        <div class="explore-status">Reading</div>
+        <h4>AI Integration in GDP Measurement</h4>
+        <p>Measuring AI's value in a world built for physical goods. Can traditional national accounting keep up with the digital era?</p>
+      </div>
+      <div class="explore-card">
+        <div class="explore-status">Building</div>
+        <h4>A Data Substack Worth Subscribing To</h4>
+        <p>Turning raw data chaos into hot takes worth reading. What does it take to make data journalism actually stick?</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- BLOG -->
+<section id="blog">
+  <div class="section-label">Writing</div>
+  <h2>From the blog</h2>
+
+  <!-- <div class="blog-posts">
+    <a href="https://priyanshikwatra.substack.com/" target="_blank" class="blog-post">
+    <div class="blog-tag">Coming Soon</div>
+    <h4>Hot deets on data, incoming.</h4>
+    <p>The Substack is being built. First posts will cover data, economics, and the mess in between.</p>
+  </a>
+
+  </div> -->
+
+  <div class="blog-cta-row">
+    <a href="https://priyanshikwatra.substack.com/" target="_blank" class="btn btn-outline">Hot deets on data, coming soon.</a>
+    <span style="font-size:0.82rem; color:var(--text-light); font-family:var(--mono);">priyanshikwatra.substack.com</span>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- LEADERSHIP -->
+<section id="leadership">
+  <div class="section-label">Leadership</div>
+  <h2>Beyond the work</h2>
+
+  <div class="leadership-card fade-up">
+    <div class="leadership-left">
+      <div class="leadership-org">Academic Research Paper Club</div>
+      <h3>Vice President</h3>
+      <div class="leadership-date">Jul 2023 – Jul 2024<br>Dyal Singh College, University of Delhi</div>
+    </div>
+    <div class="leadership-attrs">
+      <div class="leadership-attr">
+        <div class="attr-dot"></div>
+        <div>
+          <strong style="font-size:0.88rem; font-weight:500;">Mentorship</strong>
+          <p style="font-size:0.85rem; margin-top:0.2rem">Guided junior students through research methodology, paper selection, and critical reading — making academic research feel approachable rather than intimidating.</p>
+        </div>
+      </div>
+      <div class="leadership-attr">
+        <div class="attr-dot"></div>
+        <div>
+          <strong style="font-size:0.88rem; font-weight:500;">Coordination</strong>
+          <p style="font-size:0.85rem; margin-top:0.2rem">Organised club sessions, managed professor collaborations, and coordinated with industry experts to bridge academic and applied research conversations.</p>
+        </div>
+      </div>
+      <div class="leadership-attr">
+        <div class="attr-dot"></div>
+        <div>
+          <strong style="font-size:0.88rem; font-weight:500;">Initiative</strong>
+          <p style="font-size:0.85rem; margin-top:0.2rem">Proposed and ran structured paper discussion formats that increased participation and depth of conversation across sessions.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label" style="text-align:center">Contact</div>
+  <h2>Let's talk</h2>
+  <p class="contact-tagline">If something here resonates,<br>I'd be happy to connect.</p>
+
+  <div class="contact-links">
+    <a href="mailto:priyanshi.kw@gmail.com" class="contact-link">
+      <div class="contact-link-icon">✉</div>
+      priyanshi.kw@gmail.com
+    </a>
+    <a href="https://linkedin.com/in/priyanshi-kwatra" target="_blank" class="contact-link">
+      <div class="contact-link-icon">in</div>
+      linkedin.com/in/priyanshi-kwatra
+    </a>
+  </div>
+
+  <a href="mailto:priyanshi.kw@gmail.com" class="btn btn-primary" style="margin:0 auto;display:inline-flex">Send a message →</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>Priyanshi Kwatra</span>
+  <span>Data · Research · Decision Intelligence</span>
+</footer>
+
+<script>
+  // Skill cluster toggle
+  function toggleSkill(el) {
+    const isOpen = el.classList.contains('open');
+    document.querySelectorAll('.skill-cluster').forEach(c => c.classList.remove('open'));
+    if (!isOpen) el.classList.add('open');
+  }
+
+  // Project toggle
+  function toggleProject(card) {
+    const isOpen = card.classList.contains('open');
+    document.querySelectorAll('.project-card').forEach(c => {
+      c.classList.remove('open');
+      c.querySelector('.project-toggle').textContent = '+';
+    });
+    if (!isOpen) {
+      card.classList.add('open');
+      card.querySelector('.project-toggle').textContent = '−';
+    }
+  }
+
+  // Project filter
+  function filterProjects(cat, btn) {
+    document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.project-card').forEach(card => {
+      if (cat === 'all' || card.dataset.cat === cat) {
+        card.classList.add('visible');
+      } else {
+        card.classList.remove('visible');
+        card.classList.remove('open');
+        card.querySelector('.project-toggle').textContent = '+';
+      }
+    });
+  }
+
+  // Fade-up on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // Nav active state
+  const sections = document.querySelectorAll('section[id], div[id="exploring"]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 100) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === `#${current}` ? 'var(--accent)' : '';
+    });
+  });
+</script>
+</body>
+</html>
