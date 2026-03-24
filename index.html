@@ -43,7 +43,7 @@
           if (!startTime) startTime = currentTime;
           const timeElapsed = currentTime - startTime;
   
-          const duration = 700; // 👈 THIS controls speed (sweet spot)
+          const duration = 1000; // 
           const progress = Math.min(timeElapsed / duration, 1);
   
           window.scrollTo(0, start + distance * ease(progress));
