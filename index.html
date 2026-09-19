@@ -1161,36 +1161,16 @@ hr.divider::after {
   font-size: 0.83rem;
 }
 
-/* WRITING */
+/* DATADEETS */
 
 .blog-cta-row {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1rem;
   padding-top: 2rem;
-  border-top: 1px solid var(--border);
   margin-top: 2rem;
-}
-
-.writing-card {
-  margin-top: 2.5rem;
-  padding: 2rem;
-  background: var(--white);
-  border: 1px solid var(--border);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 2rem;
-}
-
-.writing-title {
-  font-family: var(--serif);
-  font-size: 1.5rem;
-  margin-bottom: 0.4rem;
-}
-
-.writing-description {
-  font-size: 0.88rem;
+  border-top: 1px solid var(--border);
+  flex-wrap: wrap;
 }
 
 /* LEADERSHIP */
@@ -1374,11 +1354,6 @@ footer {
   .nav-burger {
     display: flex;
   }
-
-  .writing-card {
-    flex-direction: column;
-    align-items: flex-start;
-  }
 }
 
 @media (max-width: 480px) {
@@ -1430,7 +1405,7 @@ footer {
     <li><a href="#skills">Skills</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#experience">Experience</a></li>
-    <li><a href="#blog">Writing</a></li>
+    <li><a href="#blog">Datadeets</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 
@@ -1446,7 +1421,7 @@ footer {
   <a href="#skills">Skills</a>
   <a href="#projects">Projects</a>
   <a href="#experience">Experience</a>
-  <a href="#blog">Writing</a>
+  <a href="#blog">Datadeets</a>
   <a href="#contact">Contact</a>
 </div>
 
@@ -2920,46 +2895,52 @@ footer {
     </h2>
 
     <p>
-      The questions I'm actively thinking through beyond client work.
+      Questions I'm actively researching through Datadeets.
     </p>
 
     <div class="explore-grid">
 
-      <div class="explore-card">
-
-        <div class="explore-status">
-          Building
-        </div>
-
-        <h4>
-          Datadeets
-        </h4>
-
-        <p>
-          Building an independent data publication exploring consumer behaviour,
-          internet culture, and emerging trends through quantitative signals
-          and research.
-        </p>
-
-      </div>
+      <!-- CARD 1 -->
 
       <div class="explore-card">
 
         <div class="explore-status">
-          Learning
+          Researching
         </div>
 
         <h4>
-          Statistical Learning
+          The Data Behind a Trend
         </h4>
 
         <p>
-          Deepening my understanding of feature engineering, model selection,
-          regularisation, and the trade-offs between predictive performance
-          and interpretability.
+          What makes a product, aesthetic, or idea suddenly take off?
+          Exploring the search, social, and market signals that appear
+          when something moves from niche to everywhere.
         </p>
 
       </div>
+
+      <!-- CARD 2 -->
+
+      <div class="explore-card">
+
+        <div class="explore-status">
+          Researching
+        </div>
+
+        <h4>
+          Celebrity Attention & Consumer Demand
+        </h4>
+
+        <p>
+          Looking at how celebrity visibility, brand partnerships,
+          and cultural relevance intersect with the products people
+          search for, notice, and buy.
+        </p>
+
+      </div>
+
+      <!-- CARD 3 -->
 
       <div class="explore-card">
 
@@ -2968,12 +2949,13 @@ footer {
         </div>
 
         <h4>
-          Consumer & Market Intelligence
+          Internet Culture, Measured
         </h4>
 
         <p>
-          Exploring how quantitative signals can explain shifts in consumer
-          behaviour, cultural trends, and market demand.
+          Turning online conversations, platform behaviour, and
+          cultural shifts into measurable signals about changing
+          tastes and consumer behaviour.
         </p>
 
       </div>
@@ -2986,38 +2968,37 @@ footer {
 
 <hr class="divider">
 
-<!-- WRITING -->
+<!-- DATADEETS -->
 
 <section id="blog">
 
   <div class="section-label">
-    Writing
+    Datadeets
   </div>
 
   <h2>
-    Datadeets
+    Data, but make it interesting.
   </h2>
 
-  <div class="writing-card">
+  <p style="max-width:620px; margin-top:1rem;">
+    An independent data publication exploring consumer behaviour,
+    internet culture, trends, and the numbers hiding underneath them.
+  </p>
 
-    <div>
-
-      <div class="writing-title">
-        Data, internet culture & consumer behaviour.
-      </div>
-
-      <p class="writing-description">
-        An independent data publication turning quantitative signals
-        and cultural observations into stories worth reading.
-      </p>
-
-    </div>
+  <div class="blog-cta-row">
 
     <a href="https://priyanshikwatra.substack.com/"
        target="_blank"
        rel="noopener"
        class="btn btn-outline">
-      Read Datadeets →
+      Substack →
+    </a>
+
+    <a href="https://www.instagram.com/thedatadeets/"
+       target="_blank"
+       rel="noopener"
+       class="btn btn-outline">
+      Instagram →
     </a>
 
   </div>
